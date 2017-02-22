@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1009229314280",
+    "project_id": "smarthome-b2c2d"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009229314280:android:07bb58ca9ce3f6ca",
+        "android_client_info": {
+          "package_name": "com.example.yijiewu.smarthome"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhqhgGGIxPZwdS9jUSqvwBvqRGxf6DLLk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

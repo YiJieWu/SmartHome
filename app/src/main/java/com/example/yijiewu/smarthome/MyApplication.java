@@ -39,24 +39,24 @@ public class MyApplication extends Application {
         //For the kitchen
         //mint
         final Region region1 = new Region(
-                "beacon 1",
+                "beacon 09",
                 UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
-                2087,49384);
+                30194,9178);
         //For the Room X
         //blueberry
         final  Region region2 = new Region(
-                "beacon 2",
+                "beacon 10",
                 UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
-                62225, 40962);
+                7122, 62286);
         //For the Room X
         //beacon Ice
         final  Region region3 = new Region(
-                "beacon 3",
+                "beacon 11",
                 UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
                 38813, 15738);
         //For the Room X
         final  Region region4 = new Region(
-                "beacon 4",
+                "beacon 12",
                 UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
                 22204, 48827);
         //Create the beacon Manager
@@ -76,22 +76,22 @@ public class MyApplication extends Application {
             //When user enter the region
             @Override
             public void onEnteredRegion(Region region, List<Beacon> list) {
-                if (region.getIdentifier().equals("beacon 1")) {
+                if (region.getIdentifier().equals("beacon 09")) {
                     // do something
                     showNotification("Warning", "You are in the Kitchen!!!");
-                    new SendData().execute("one");
+                    new SendData().execute("nine");
 
-                } else if(region.getIdentifier().equals("beacon 2")){
+                } else if(region.getIdentifier().equals("beacon 10")){
                     showNotification("Warning", "You are in the Living Room!!!");
-                    new SendData().execute("two");
+                    new SendData().execute("ten");
 
-                }else if(region.getIdentifier().equals("beacon 3")) {
+                }else if(region.getIdentifier().equals("beacon 11")) {
                     showNotification("Warning", "You are in the X!!!");
-                    new SendData().execute("three");
+                    new SendData().execute("eleven");
 
-                }else if(region.getIdentifier().equals("beacon 4")){
+                }else if(region.getIdentifier().equals("beacon 12")){
                     showNotification("Warning", "You are in the X!!!");
-                    new SendData().execute("four");
+                    new SendData().execute("twelve");
                 }else{
                     //do Nothing
                 }
@@ -141,23 +141,9 @@ public class MyApplication extends Application {
                 // Create data variable for sent values to server
                 String query_string = null;
 
-                if(beacon_num[0].equals("one")){
+                if(beacon_num[0].equals("nine")){
                     query_string = URLEncoder.encode("device", "UTF-8")
-                            + "=" + URLEncoder.encode("Kitchen Estimote 6", "UTF-8");
-
-                    //I am just going to use 1 represent it's in beacon1's range
-                    query_string += "&" + URLEncoder.encode("action", "UTF-8") + "="
-                            + URLEncoder.encode("Enter Kitchen", "UTF-8");
-
-
-                    query_string += "&" + URLEncoder.encode("timestamp", "UTF-8") + "='"
-                            + URLEncoder.encode(currentDateTimeString, "UTF-8") + "'";
-
-                    query_string += "&" + URLEncoder.encode("action_code", "UTF-8") + "='"
-                            + URLEncoder.encode(String.valueOf(6), "UTF-8") + "'";
-                }else if(beacon_num[0].equals("two")){
-                    query_string = URLEncoder.encode("device", "UTF-8")
-                            + "=" + URLEncoder.encode("Living Roome Estimote 1", "UTF-8");
+                            + "=" + URLEncoder.encode("Living Room Estimote 09", "UTF-8");
 
                     //I am just going to use 1 represent it's in beacon1's range
                     query_string += "&" + URLEncoder.encode("action", "UTF-8") + "="
@@ -168,8 +154,51 @@ public class MyApplication extends Application {
                             + URLEncoder.encode(currentDateTimeString, "UTF-8") + "'";
 
                     query_string += "&" + URLEncoder.encode("action_code", "UTF-8") + "='"
-                            + URLEncoder.encode(String.valueOf(1), "UTF-8") + "'";
+                            + URLEncoder.encode("09", "UTF-8") + "'";
+                }else if(beacon_num[0].equals("ten")){
+                    query_string = URLEncoder.encode("device", "UTF-8")
+                            + "=" + URLEncoder.encode("Kitchen Estimote 10", "UTF-8");
+
+                    //I am just going to use 1 represent it's in beacon1's range
+                    query_string += "&" + URLEncoder.encode("action", "UTF-8") + "="
+                            + URLEncoder.encode("Enter Kitchen", "UTF-8");
+
+
+                    query_string += "&" + URLEncoder.encode("timestamp", "UTF-8") + "='"
+                            + URLEncoder.encode(currentDateTimeString, "UTF-8") + "'";
+
+                    query_string += "&" + URLEncoder.encode("action_code", "UTF-8") + "='"
+                            + URLEncoder.encode(String.valueOf(10), "UTF-8") + "'";
+                }else if(beacon_num[0].equals("eleven")){
+                    query_string = URLEncoder.encode("device", "UTF-8")
+                            + "=" + URLEncoder.encode("Bedroom Estimote 11", "UTF-8");
+
+                    //I am just going to use 1 represent it's in beacon1's range
+                    query_string += "&" + URLEncoder.encode("action", "UTF-8") + "="
+                            + URLEncoder.encode("Enter Bedroom", "UTF-8");
+
+
+                    query_string += "&" + URLEncoder.encode("timestamp", "UTF-8") + "='"
+                            + URLEncoder.encode(currentDateTimeString, "UTF-8") + "'";
+
+                    query_string += "&" + URLEncoder.encode("action_code", "UTF-8") + "='"
+                            + URLEncoder.encode(String.valueOf(11), "UTF-8") + "'";
+                }else if(beacon_num[0].equals("twelve")){
+                    query_string = URLEncoder.encode("device", "UTF-8")
+                            + "=" + URLEncoder.encode("Bathroom Estimote 12", "UTF-8");
+
+                    //I am just going to use 1 represent it's in beacon1's range
+                    query_string += "&" + URLEncoder.encode("action", "UTF-8") + "="
+                            + URLEncoder.encode("Enter Bathroom", "UTF-8");
+
+
+                    query_string += "&" + URLEncoder.encode("timestamp", "UTF-8") + "='"
+                            + URLEncoder.encode(currentDateTimeString, "UTF-8") + "'";
+
+                    query_string += "&" + URLEncoder.encode("action_code", "UTF-8") + "='"
+                            + URLEncoder.encode(String.valueOf(12), "UTF-8") + "'";
                 }
+
 
 
                 Log.d("Query", query_string);
