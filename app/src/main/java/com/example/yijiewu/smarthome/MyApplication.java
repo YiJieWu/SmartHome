@@ -47,7 +47,7 @@ public class MyApplication extends Application {
         final  Region region2 = new Region(
                 "beacon 2",
                 UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
-                7122, 62286);
+                62225, 40962);
         //For the Room X
         //beacon Ice
         final  Region region3 = new Region(
@@ -79,19 +79,19 @@ public class MyApplication extends Application {
                 if (region.getIdentifier().equals("beacon 1")) {
                     // do something
                     showNotification("Warning", "You are in the Kitchen!!!");
-                    new SendData().execute(1);
+                    new SendData().execute("one");
 
                 } else if(region.getIdentifier().equals("beacon 2")){
-                    showNotification("Warning", "You are in the X!!!");
-                    new SendData().execute(2);
+                    showNotification("Warning", "You are in the Living Room!!!");
+                    new SendData().execute("two");
 
                 }else if(region.getIdentifier().equals("beacon 3")) {
                     showNotification("Warning", "You are in the X!!!");
-                    new SendData().execute(3);
+                    new SendData().execute("three");
 
                 }else if(region.getIdentifier().equals("beacon 4")){
                     showNotification("Warning", "You are in the X!!!");
-                    new SendData().execute(3);
+                    new SendData().execute("four");
                 }else{
                     //do Nothing
                 }
@@ -124,10 +124,13 @@ public class MyApplication extends Application {
     }
 
     //send data to the server, the input for the do in background will be the number identifier of the estimote
-    public class SendData extends AsyncTask<Integer,Void, Void> {
+    public class SendData extends AsyncTask<String,Void, Void> {
         @Override
-        protected Void doInBackground(Integer... beacon_num) {
+        protected Void doInBackground(String... beacon_num) {
             Log.d("send data", "IN THE BACKEND");
+            Log.d("beacon num is", beacon_num[0]);
+
+
             OutputStreamWriter writer = null;
             BufferedReader reader;
             //get and format the time stamp
@@ -138,22 +141,39 @@ public class MyApplication extends Application {
                 // Create data variable for sent values to server
                 String query_string = null;
 
-                query_string = URLEncoder.encode("device", "UTF-8")
-                        + "=" + URLEncoder.encode("Kitchen Estimote 6", "UTF-8");
+                if(beacon_num[0].equals("one")){
+                    query_string = URLEncoder.encode("device", "UTF-8")
+                            + "=" + URLEncoder.encode("Kitchen Estimote 6", "UTF-8");
 
-                //I am just going to use 1 represent it's in beacon1's range
-                query_string += "&" + URLEncoder.encode("action", "UTF-8") + "="
+                    //I am just going to use 1 represent it's in beacon1's range
+                    query_string += "&" + URLEncoder.encode("action", "UTF-8") + "="
                             + URLEncoder.encode("Enter Kitchen", "UTF-8");
 
 
-                query_string += "&" + URLEncoder.encode("timestamp", "UTF-8") + "='"
-                        + URLEncoder.encode(currentDateTimeString, "UTF-8") + "'";
+                    query_string += "&" + URLEncoder.encode("timestamp", "UTF-8") + "='"
+                            + URLEncoder.encode(currentDateTimeString, "UTF-8") + "'";
 
-                query_string += "&" + URLEncoder.encode("action_code", "UTF-8") + "='"
-                        + URLEncoder.encode(String.valueOf(6), "UTF-8") + "'";
+                    query_string += "&" + URLEncoder.encode("action_code", "UTF-8") + "='"
+                            + URLEncoder.encode(String.valueOf(6), "UTF-8") + "'";
+                }else if(beacon_num[0].equals("two")){
+                    query_string = URLEncoder.encode("device", "UTF-8")
+                            + "=" + URLEncoder.encode("Living Roome Estimote 1", "UTF-8");
+
+                    //I am just going to use 1 represent it's in beacon1's range
+                    query_string += "&" + URLEncoder.encode("action", "UTF-8") + "="
+                            + URLEncoder.encode("Enter Living Room", "UTF-8");
+
+
+                    query_string += "&" + URLEncoder.encode("timestamp", "UTF-8") + "='"
+                            + URLEncoder.encode(currentDateTimeString, "UTF-8") + "'";
+
+                    query_string += "&" + URLEncoder.encode("action_code", "UTF-8") + "='"
+                            + URLEncoder.encode(String.valueOf(1), "UTF-8") + "'";
+                }
 
 
                 Log.d("Query", query_string);
+
 
                 String text = "";
 
