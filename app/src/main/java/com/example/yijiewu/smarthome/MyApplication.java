@@ -86,7 +86,7 @@ public class MyApplication extends Application {
                     new SendData().execute("ten");
 
                 }else if(region.getIdentifier().equals("beacon 11")) {
-                    showNotification("Warning", "You are in the X!!!");
+                    showNotification("Warning", "You are in the Bedroom!!!");
                     new SendData().execute("eleven");
 
                 }else if(region.getIdentifier().equals("beacon 12")){
